@@ -1,4 +1,4 @@
-name: Yoru Kernel
+name: vince kernel
 
 on:
   workflow_dispatch:
@@ -55,8 +55,8 @@ jobs:
 
       - name: Start Build with log
         env:
-          KBUILD_BUILD_USER: "Hoshino"
-          KBUILD_BUILD_HOST: "Yoru"
+          KBUILD_BUILD_USER: "cappuccino"
+          KBUILD_BUILD_HOST: "build"
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           PIXELDRAIN_API_KEY: ${{ secrets.PIXELDRAIN_API_KEY }}
@@ -65,7 +65,7 @@ jobs:
           TELE_SESSION: ${{ secrets.TELE_SESSION }}
         run: |
           mkdir -p logs
-          bash yoru.sh ${{ matrix.variant }} 2>&1 | tee logs/build-${{ matrix.variant }}.txt
+          bash build-vince.sh ${{ matrix.variant }} 2>&1 | tee logs/build-${{ matrix.variant }}.txt
 
       - name: Upload Build Log
         if: always()
